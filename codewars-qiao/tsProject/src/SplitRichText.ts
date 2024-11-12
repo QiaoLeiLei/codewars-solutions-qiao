@@ -6,21 +6,22 @@
 /**
  * Splits rich text into an array of strings while preserving color information.
  * @param {string} text - The rich text to be split.
- * @returns {string[]} An array of strings with color information preserved.
+ * @returns {string[]}
  */
 export function splitRichText(text: string): string[] {
   const tagRegex = /(<\/?[^>]+>)/g;
   const parts = text.split(tagRegex);
+  const filteredParts = parts.filter(item => item !== '');
   const result = [];
 
   let currentColor = '';
-  for (let i = 0; i < parts.length; i++) {
-    if (parts[i].startsWith('<color=')) {
-      currentColor = parts[i];
-    } else if (parts[i] === '</color>') {
+  for (let i = 0; i < filteredParts.length; i++) {
+    if (filteredParts[i].startsWith('<color=')) {
+      currentColor = filteredParts[i];
+    } else if (filteredParts[i] === '</color>') {
       currentColor = '';
-    } else if (parts[i].trim() !== '') {
-      result.push(currentColor + parts[i] + (currentColor ? '</color>' : ''));
+    } else if (filteredParts[i].trim() !== '') {
+      result.push(currentColor + filteredParts[i] + (currentColor ? '</color>' : ''));
     }
   }
 
