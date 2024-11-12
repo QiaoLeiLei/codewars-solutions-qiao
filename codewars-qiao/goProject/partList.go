@@ -7,6 +7,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
@@ -25,6 +26,15 @@ func PartList(arr []string) string {
 
 func seatsInTheater(nCols int, nRows int, col int, row int) int {
 	return (nCols - col + 1) * (nRows - row)
+}
+
+func InAscOrder(numbers []int) bool {
+	//slices.IsSorted(numbers)
+	return sort.IntsAreSorted(numbers)
+}
+
+func addLetters(letters []string) {
+
 }
 
 func main() {

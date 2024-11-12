@@ -17,3 +17,17 @@ export function partlist(arr: string[]): string[][] {
 }
 
 console.log(partlist(["I", "wish", "I", "hadn't", "come"]))
+
+export function addLetters(...letters: string[]): string {
+    if (letters.length === 0) { return 'z' }
+    let asciiSum = letters.reduce((sum, letter) => sum + letter.charCodeAt(0) - 96, 0);
+    // 转成小写字母
+    asciiSum %= 26;
+    if (asciiSum == 0) {
+        return 'z'
+    } else {
+        return String.fromCharCode(asciiSum + 96);
+    }
+}
+
+console.log(addLetters("g", "m", "k", "l", "i"));
