@@ -8,7 +8,7 @@
  * @param {string} text - The rich text to be split.
  * @returns {string[]} An array of strings with color information preserved.
  */
-export function splitRichText(text: string) {
+export function splitRichText(text: string): string[] {
   const tagRegex = /(<\/?[^>]+>)/g;
   const parts = text.split(tagRegex);
   const result = [];
@@ -27,4 +27,10 @@ export function splitRichText(text: string) {
   return result;
 }
 
-console.log(splitRichText('<color=#0fffff>这是</color><color=#ff0000>富文本</color><color=#00ff00>打字机</color><color=#0000ff>效果</color>'));
+console.log(splitRichText('<color=#0fffff>这是</color><color=#ff0000>富文本</color>222222<color=#00ff00>打字机</color><color=#0000ff>效果</color>'));
+
+export function richTextToText(text: string): string {
+  return text.replace(/<\/?[^>]+>/g, '');
+}
+
+console.log(richTextToText('<color=#0fffff>这是</color><color=#ff0000>富文本</color>11111111<color=#00ff00>打字机</color><color=#0000ff>效果</color>'));
