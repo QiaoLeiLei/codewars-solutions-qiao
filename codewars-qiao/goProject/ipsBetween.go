@@ -7,6 +7,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -29,6 +30,33 @@ func ipsBetween(start, end string) int {
 	}
 
 	return endNum - starNum
+}
+
+func Is_valid_ip(ip string) bool {
+	if strings.Count(ip, ".") != 3 {
+		return false
+	}
+	ipArr := strings.Split(ip, ".")
+	for _, v := range ipArr {
+		if len(v) > 1 && strings.HasPrefix(v, "0") {
+			return false
+		}
+		num, err := strconv.Atoi(v)
+		if err != nil {
+			return false
+		}
+
+		if num > 255 || num < 0 {
+			return false
+		}
+	}
+	return true
+}
+
+func ExpressionMatter(a int, b int, c int) int {
+	res := []int{a * b * c, a + b + c, a*b + c, a * (b + c), a + b*c, (a + b) * c}
+	sort.Ints(res)
+	return res[len(res)-1]
 }
 
 func main() {
