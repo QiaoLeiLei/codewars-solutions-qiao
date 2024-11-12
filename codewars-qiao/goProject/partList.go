@@ -23,6 +23,11 @@ func PartList(arr []string) string {
 	return result
 }
 
+func seatsInTheater(nCols int, nRows int, col int, row int) int {
+	return (nCols - col + 1) * (nRows - row)
+}
+
 func main() {
-	fmt.Println(PartList([]string{"I", "wish", "I", "hadn't", "come"}))
+	fmt.Println(seatsInTheater(16, 11, 5, 3))
+	//fmt.Println(PartList([]string{"I", "wish", "I", "hadn't", "come"}))
 }
