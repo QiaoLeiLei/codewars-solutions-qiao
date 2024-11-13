@@ -35,3 +35,19 @@ export function richTextToText(text: string): string {
 }
 
 console.log(richTextToText('<color=#0fffff>这是</color><color=#ff0000>富文本</color>11111111<color=#00ff00>打字机</color><color=#0000ff>效果</color>'));
+
+export function getRichColor(text: string): string[] {
+  const tagRegex = /(<\/?[^>]+>)/g;
+  const parts = text.split(tagRegex);
+  const result: string[] = [];
+
+  for (let i = 0; i < parts.length; i++) {
+    if (parts[i].startsWith('<color=')) {
+      result.push(parts[i])
+    } else if (parts[i] === '</color>') {
+      result.push(parts[i])
+    }
+  }
+  return result;
+}
+console.log(getRichColor('<color=#0fffff>这是</color><color=#ff0000>富文本</color>11111111<color=#00ff00>打字机</color><color=#0000ff>效果</color>'));
