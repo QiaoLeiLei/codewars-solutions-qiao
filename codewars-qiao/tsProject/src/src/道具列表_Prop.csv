@@ -1,0 +1,6 @@
+道具ID,名称,图标,描述
+id,name,res,des
+number,string,string,string
+1,金币,2000,游戏内基础货币
+2,钻石,10,游戏内特殊货币
+3,荣誉值,0,游戏内特殊货币

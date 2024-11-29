@@ -33,11 +33,23 @@ func InAscOrder(numbers []int) bool {
 	return sort.IntsAreSorted(numbers)
 }
 
-func addLetters(letters []string) {
-
+func Solve(s string) int {
+	const w = "aeiou"
+	count := 0
+	maxCount := 0
+	for _, v := range s {
+		if strings.ContainsRune(w, v) {
+			count++
+		} else {
+			maxCount = max(maxCount, count)
+			count = 0
+		}
+	}
+	return maxCount
 }
 
 func main() {
-	fmt.Println(seatsInTheater(16, 11, 5, 3))
+	fmt.Println(Solve("qruyrewqhgfdsaeiret"))
+	//fmt.Println(seatsInTheater(16, 11, 5, 3))
 	//fmt.Println(PartList([]string{"I", "wish", "I", "hadn't", "come"}))
 }
